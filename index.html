@@ -23,41 +23,103 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             .container {
                 padding: 0.01em 16px;
             }
+            .tablink {
+                background-color: #555;
+                color: white;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                font-size: 17px;
+                width: 25%;
+            }
+            .tablink:hover {
+                background-color: #777;
+            }
+            .tabcontent {
+                color: white;
+                display: none;
+                padding: 10px 20px;
+                height: 100%;
+            }
+            #Datortikli {
+                background-color: white;
+                color: black;
+                padding: 0.01em 16px;
+                height: 50%;
+            }
+            #LAN {
+                background-color: green;
+            }
+            #WAN {
+                background-color: red;
+            }
+            #Bezvadu {
+                background-color: orange;
+            }
         </style> 
     </head>
 
     <body>
+
+        <button class="tablink" onclick="openPage('Datortikli', this, 'lightblue')" id="defaultOpen">Datortīkli</button>
+        <button class="tablink" onclick="openPage('LAN', this, 'green')">LAN</button>
+        <button class="tablink" onclick="openPage('WAN', this, 'red')">WAN</button>
+        <button class="tablink" onclick="openPage('Bezvadu', this, 'orange')">Bezvadu</button>
         <h2>Datortīklu veidi</h2>
 
-        <div class="leftBorder blueBorder paleBlue container">   
+        <div class="tabcontent leftBorder blueBorder paleBlue container" id="Datortikli">   
             <p>
                 Datortīkls (network) jeb tīkls ir datoru un ar tiem saistīto ierīču grupa, 
                 kas savstarpēji savienotas ar sakaru kanāliem un kas nodrošina datņu un citu 
                 resursu kopīgas izmantošanas iespējas (resource sharing) vairākiem lietotājiem.
             </p>
         </div>
-        <h1>1. Lokālais Tīkls (LAN)</h1>
-        <p>
-            Lokālais tīkls (Local Area Network – LAN) ir datoru tīkls, kas izvietots nelielā teritorijā un atrodas lietotāja pārziņā. Lokālais tīkls sastāv no sakaru līnijām, kas savieno personālos datorus un citas elektroniskās koplietošanas iekārtas, piemēram, printerus un datu glabāšanas ierīces.
-        </p>
-        <p>
-            Lai savienotu lokālā tīkla datorus, visbiežāk izmanto vadus un centrmezglu (hub) vai komutatoru (switch), kas izpilda dažādu ierīču kopīga savienojuma punkta funkcijas.
-        </p>
-        <img src="images/lan.png" alt="LAN tīkla piemērs">
-        
-        <h1>2. Teritoriālais tīkls (WAN)</h1>
-        <p>
-            Teritoriālais tīkls (Wide Area Network – WAN) ir datoru tīkls, kas savieno attālus lietotājus, kuri var atrasties citās pilsētās vai valstīs un kuri parasti izmanto vispārējās lietošanas vai speciālus sakaru līdzekļus.
-        </p>
-        <p>
-            Teritoriālajā datortīklā parasti ietilpst daudzi lokālie tīkli vai to grupas. Kā šāda tīkla piemēru var minēt intertīklu jeb internetu (internet).
-        </p>
-        <img src="images/wan.png" alt="LAN tīkla piemērs">
-        
-        <h1>3. Bezvadu tīkls</h1>
-        <p>
-            Bezvadu (wireless) tīkls ir jebkura veida datortīkls, kas nodrošina datu apmaiņu starp datoriem bez vadu palīdzības.
-        </p>
-        <img src="images/bezvad.png" alt="LAN tīkla piemērs">
+        <div class="tabcontent" id="LAN">
+            <h1>1. Lokālais Tīkls (LAN)</h1>
+            <p>
+                Lokālais tīkls (Local Area Network – LAN) ir datoru tīkls, kas izvietots nelielā teritorijā un atrodas lietotāja pārziņā. Lokālais tīkls sastāv no sakaru līnijām, kas savieno personālos datorus un citas elektroniskās koplietošanas iekārtas, piemēram, printerus un datu glabāšanas ierīces.
+            </p>
+            <p>
+                Lai savienotu lokālā tīkla datorus, visbiežāk izmanto vadus un centrmezglu (hub) vai komutatoru (switch), kas izpilda dažādu ierīču kopīga savienojuma punkta funkcijas.
+            </p>
+            <img src="images/lan.png" alt="LAN tīkla piemērs">
+        </div>
+
+        <div class="tabcontent" id="WAN">
+            <h1>2. Teritoriālais tīkls (WAN)</h1>
+            <p>
+                Teritoriālais tīkls (Wide Area Network – WAN) ir datoru tīkls, kas savieno attālus lietotājus, kuri var atrasties citās pilsētās vai valstīs un kuri parasti izmanto vispārējās lietošanas vai speciālus sakaru līdzekļus.
+            </p>
+            <p>
+                Teritoriālajā datortīklā parasti ietilpst daudzi lokālie tīkli vai to grupas. Kā šāda tīkla piemēru var minēt intertīklu jeb internetu (internet).
+            </p>
+            <img src="images/wan.png" alt="LAN tīkla piemērs">
+        </div>
+
+        <div class="tabcontent" id="Bezvadu">
+            <h1>3. Bezvadu tīkls</h1>
+            <p>
+                Bezvadu (wireless) tīkls ir jebkura veida datortīkls, kas nodrošina datu apmaiņu starp datoriem bez vadu palīdzības.
+            </p>
+            <img src="images/bezvad.png" alt="LAN tīkla piemērs">
+        </div>
+        <script>
+            function openPage(pageName, element, color) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].style.backgroundColor = "";
+                }
+                document.getElementById(pageName).style.display = "block";
+                element.style.backgroundColor = color;
+            }
+            document.getElementById("defaultOpen").click();
+        </script>
     </body>
 </html>
