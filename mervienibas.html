@@ -8,8 +8,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <title>Informācijas daudzuma mērvienības</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+        <style>         
+            p {
+                font-size: 20px;
+            }
+            form{
+                background-color: rgb(220, 220, 0);
+            }
+        </style>
+    </head> 
+    <body background="images/cipari.jpg">
         <h1>Informācijas daudzuma mērvienības</h1>
         <form>
             <p>
@@ -17,14 +25,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                 GB=
             </p>
             <p>
-                <input type="button" name="MegaB">
+                <input type="button" name="megabaiti" value="Izteikt megabaitos" onclick="megaByte()">
                 <input name="MB">
-                GB=
+                MB
             </p>
             <p>
+                <input type="button" name="mibibaiti" value="Izteikt mibibaitos" onclick="mibiByte()">
                 <input name="MiB">
-                GB=
+                MiB
             </p>
         </form>
+        <script>
+            function megaByte() {
+                var gb = document.getElementsByName("GB")[0].value;
+                document.getElementsByName("MB")[0].value = gb*1000;
+            }
+            function mibiByte() {
+                var gb = document.getElementsByName("GB")[0].value;
+                document.getElementsByName("MiB")[0].value = gb*1024;
+            }
+        </script>
     </body>
 </html>
