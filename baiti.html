@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Baiti</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            form {
+                width: 25%;
+                border: 1px solid black;
+                padding: 7px;
+            }
+        </style>   
+    </head>
+    <body>
+        <form >
+            <p>Aprēķināt cik daudz informācijas var lejuplādēt <input type="text" name="seconds" onclick="reset()">sekundēs, ja interneta ātrums ir 25Mbps.</p>
+            <p>Atbilde</p>
+            <p>
+               <input name="answer">
+               <input type="radio" id="KiB" name="byte" value="KiB" onclick="display1()"> 
+               <label for="KiB">KiB</label>
+               <input type="radio" id="KB" name="byte" value="KB" onclick="display2()">
+               <label for="KB">KB</label>
+            </p>
+            
+        </form>
+        <script>
+            
+            function display1() {
+                var sec = document.getElementsByName("seconds")[0].value;
+                document.getElementsByName("answer")[0].value = sec*976.5625*25*0.125;
+            }
+            function display2() {
+                var sec = document.getElementsByName("seconds")[0].value;
+                document.getElementsByName("answer")[0].value = sec*1000*25*0.125;
+            }
+            function reset() {                
+                document.getElementsByName("seconds")[0].value="";
+                document.getElementsByName("answer")[0].value="";
+                document.getElementById("KB").checked = false;
+                document.getElementById("KiB").checked = false;
+            }
+        </script>    
+    </body>
+</html>
